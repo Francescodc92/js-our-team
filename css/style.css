@@ -6,6 +6,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  cursor: pointer;
+}
+
 body.active {
   position: relative;
   overflow: hidden;
