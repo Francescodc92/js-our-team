@@ -6,3 +6,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.card{
+  box-shadow: .625rem .625rem .625rem rgba(0, 0, 0, 0.3);
+}
+.card img{
+  max-height: 250px;
+  object-fit: cover;
+  object-position: top ;
+}

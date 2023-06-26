@@ -72,21 +72,32 @@ const teamMembers = [
 /*-------------- 
 Elements HTML
 --------------*/
-const ulElement = document.getElementById('member-list')
+const rowElement = document.querySelector('.row')
 
 teamMembers.forEach(element => {
   const currentMemberName = element.memberName
   const currentBusinessRole = element.businessRole
   const currentMemberPhoto = element.photo
   const cardHTML =`
-  <li class="mt-5 bg-light border">
-    <h3>Nome membro: ${ currentMemberName}</h3>
-    <h4>Ruolo membro: ${ currentBusinessRole}</h4>
-    <a href="${ currentMemberPhoto}" target="_blank">
-      foto ${ currentMemberName}
-    </a>
-  </li>
+    <div class=" col-sm-6 col-lg-4 mt-2">
+      <div class="card">
+          <img src="${currentMemberPhoto}"
+            class="card-img-top img-fluid"
+            alt="foto ${currentMemberName}"
+          >
+
+          <div class="card-body text-center">
+            <h5 class="card-title">${currentMemberName}</h5>
+            <p class="card-text">${currentBusinessRole}</p>
+            <a href="${currentMemberPhoto}" class="btn btn-primary">
+              foto ${currentMemberName}
+            </a>
+          </div>
+        </div>
+        <!--end card-->
+    </div>
+    <!--end col-->
   `
 
-  ulElement.innerHTML += cardHTML
+  rowElement.innerHTML += cardHTML
 })
