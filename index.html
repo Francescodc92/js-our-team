@@ -11,15 +11,62 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <!--bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!--css -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center mt-5 text-uppercase">Il nostro team</h1>
-      <div class="row mb-5">
+      <h1 class="text-center pt-5 text-uppercase">Il nostro team</h1>
+      <button id="open-modal" class="btn btn-success my-3">Aggiungi membro</button>
+      <div class="row pb-5">
       </div>
       <!--end row-->
+    </div>
+    <div class="overlay d-flex align-items-center justify-content-center">
+      <form id="add-new-member">
+        <h4 class="my-4 text-center text-primary">
+          Aggiungi nuovo membro al team
+        </h4>
+        <!--end form title-->
+        <div class="mb-3">
+          <label for="member-name" class="form-label text-capitalize">
+            Nome completo nuovo membro
+          </label>
+          <input type="text" class="form-control" id="member-name" aria-describedby="name-helper">
+          <div id="name-helper" class="form-text">
+            aggiungere nome e cognome divisi da spazio
+          </div>
+        </div>
+        <!--end input member full name-->
+        <div class="mb-3">
+          <label for="member-role" class="form-label text-capitalize">
+            Ruolo in azienda del nuovo membro
+          </label>
+          <input type="text" class="form-control" id="member-role">
+        </div>
+        <!--end input member role-->
+        <div class="mb-3">
+          <label for="member-photo" class="form-label text-capitalize">
+            Link alla foto del nuovo membro
+          </label>
+          <input type="text" class="form-control" id="member-photo">
+        </div>
+        <!--end input link photo-->
+
+
+        <button type="submit" class="btn btn-success text-capitalize">
+          Aggiungi membro
+        </button>
+        <!--submit button-->
+      </form>
+      <!--end form add new member-->
+
+      <button id="close-modal" >
+        <i class="bi bi-x-square-fill"></i>
+      </button>
+      <!--close modal button-->
     </div>
     <!--end container-->
     <!--my js-->

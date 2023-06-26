@@ -6,6 +6,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.active {
+  position: relative;
+  overflow: hidden;
+}
 .card{
   box-shadow: .625rem .625rem .625rem rgba(0, 0, 0, 0.3);
 }
@@ -13,4 +17,38 @@
   max-height: 250px;
   object-fit: cover;
   object-position: top ;
+}
+
+.overlay{
+ width: 100%;
+ height: 100vh;
+ background-color: rgba(0, 0, 0, 0.5);
+ visibility: hidden;
+ opacity: 0;
+ position: absolute;
+ top: 0;
+ left: 0;
+}
+
+body.active .overlay{
+  visibility:visible;
+  opacity: 1;
+}
+
+button#close-modal{
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  padding: .3125rem .625rem;
+  font-size: 1.5625rem;
+}
+
+form{
+  width: 50%;
+  background-color: #fff;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
 }

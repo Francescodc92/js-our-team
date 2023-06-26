@@ -73,10 +73,18 @@ const teamMembers = [
 Elements HTML
 --------------*/
 const rowElement = document.querySelector('.row')
+const openModalButton = document.getElementById('open-modal')
+const closeModalButton = document.getElementById('close-modal')
+const bodyElement = document.querySelector('body')
+const formElement = document.getElementById('add-new-member')
+const inputFullName = document.getElementById('member-name')
+const inputRole = document.getElementById('member-role')
+const inputPhoto = document.getElementById('member-photo')
 /*-----------
 app functions
 ------------*/
 const appLoad = ()=> {
+  rowElement.innerHTML = ''
   teamMembers.forEach(element => {
    const currentMemberName = element.memberName
    const currentBusinessRole = element.businessRole
@@ -96,8 +104,8 @@ const createHTML = (name, role, photo)=> {
           >
 
           <div class="card-body text-center">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">${role}</p>
+            <h5 class="card-title text-capitalize">${name}</h5>
+            <p class="card-text text-capitalize">${role}</p>
             <a href="${photo}" class="btn btn-primary">
               foto ${name}
             </a>
@@ -113,6 +121,51 @@ const createHTML = (name, role, photo)=> {
 const renderHTML = (element, target)=> {
   target.innerHTML += element
 }
+const getDataNewMember = ()=> {
+  const newMemberName = inputFullName.value
+  const newMemberRole = inputRole.value
+  const newMemberPhoto = inputPhoto.value
+  
+  return { 
+    newMemberName,
+    newMemberRole,
+    newMemberPhoto
+  }
+}
+
+const isertNewData = data=>{
+  console.log(teamMembers)
+  teamMembers.push(
+    {
+      memberName: data.newMemberName,
+      businessRole: data.newMemberRole,
+      photo: data.newMemberPhoto,
+    }
+    )
+    console.log(teamMembers)
+}
+
+const clearFields = () => {
+  inputFullName.value = ""
+  inputRole.value = ""
+  inputPhoto.value = ""
+}
+
+closeModalButton.addEventListener('click', ()=> {
+  bodyElement.classList.remove('active')
+})
+
+openModalButton.addEventListener('click', ()=> {
+  bodyElement.classList.add('active')
+})
+
+formElement.addEventListener('submit', (e)=> {
+  e.preventDefault()
+  isertNewData(getDataNewMember())
+  bodyElement.classList.remove('active')
+  clearFields()
+  appLoad()
+})
 
 appLoad()
 
