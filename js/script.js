@@ -17,6 +17,9 @@ Barbara Ramos  | Graphic Designer      | barbara-ramos-graphic-designer.jpg
   - MILESTONE 1 :
     - Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
 
+  - MILESTONE 2
+    - Stampare le stesse informazioni su DOM sottoforma di stringhe
+
 RAGIONAMENTO BASE MILESTONE 0
 1 reare un array di oggetti , ogni oggetto si riferirà a uno degli lementi del team
 
@@ -24,45 +27,66 @@ RAGIONAMENTO BASE MILESTONE 1
 1 creare un ciclo per percorrere l'array
   - prendere le informazioni del membro del team contenute nell'oggetto nella posizione corrente dell'array
     - stampare in console le informazioni  
-*/
 
+
+RAGIONAMENTO BASE MILESTONE 2
+1 creare degli elementi html che conterranno le info di ogni membro
+  - creare l'html e inserire le informazioni al posto giusto
+  - popolare l'html con gli elementi creati
+*/
+/*-------------- 
+Data members
+--------------*/
 const teamMembers = [
   {
     memberName: 'Wayne Barnett',
     businessRole: 'Founder & CEO',
-    photo: 'wayne-barnett-founder-ceo.jpg',
+    photo: './img/wayne-barnett-founder-ceo.jpg',
   },
   {
     memberName: 'Angela Caroll',
     businessRole: 'Chief Editor',
-    photo: 'angela-caroll-chief-editor.jpg',
+    photo: './img/angela-caroll-chief-editor.jpg',
   },
   {
     memberName: 'Walter Gordon',
     businessRole: 'Office Manager',
-    photo: 'walter-gordon-office-manager.jpg',
+    photo: './img/walter-gordon-office-manager.jpg',
   },
   {
     memberName: 'Angela Lopez',
     businessRole: 'Social Media Manager',
-    photo: 'angela-lopez-social-media-manager.jpg',
+    photo: './img/angela-lopez-social-media-manager.jpg',
   },
   {
     memberName: 'Scott Estrada',
     businessRole: 'Developer',
-    photo: 'scott-estrada-developer.jpg',
+    photo: './img/scott-estrada-developer.jpg',
   },
   {
     memberName: 'Barbara Ramos',
     businessRole: 'Graphic Designer',
-    photo: 'barbara-ramos-graphic-designer.jpg',
+    photo: './img/barbara-ramos-graphic-designer.jpg',
   }
 ];
+/*-------------- 
+Elements HTML
+--------------*/
+const ulElement = document.getElementById('member-list')
 
 teamMembers.forEach(element => {
   const currentMemberName = element.memberName
   const currentBusinessRole = element.businessRole
   const currentMemberPhoto = element.photo
+  const cardHTML =`
+  <li class="mt-5 bg-light border">
+    <h3>Nome membro: ${ currentMemberName}</h3>
+    <h4>Ruolo membro: ${ currentBusinessRole}</h4>
+    <a href="${ currentMemberPhoto}" target="_blank">
+      foto ${ currentMemberName}
+    </a>
+  </li>
+  `
 
-  console.log('Nome membro: ' + currentMemberName, 'Ruolo membro: ' + currentBusinessRole,'link foto : ' +  currentMemberPhoto)
+  ulElement.innerHTML += cardHTML
 })
