@@ -73,24 +73,33 @@ const teamMembers = [
 Elements HTML
 --------------*/
 const rowElement = document.querySelector('.row')
+/*-----------
+app functions
+------------*/
+const appLoad = ()=> {
+  teamMembers.forEach(element => {
+   const currentMemberName = element.memberName
+   const currentBusinessRole = element.businessRole
+   const currentMemberPhoto = element.photo
+   const cardHTML = createHTML(currentMemberName, currentBusinessRole, currentMemberPhoto)
+   renderHTML(cardHTML, rowElement )
+ })
+}
 
-teamMembers.forEach(element => {
-  const currentMemberName = element.memberName
-  const currentBusinessRole = element.businessRole
-  const currentMemberPhoto = element.photo
-  const cardHTML =`
+const createHTML = (name, role, photo)=> {
+  const html = `
     <div class=" col-sm-6 col-lg-4 mt-2">
       <div class="card">
-          <img src="${currentMemberPhoto}"
+          <img src="${photo}"
             class="card-img-top img-fluid"
-            alt="foto ${currentMemberName}"
+            alt="foto ${name}"
           >
 
           <div class="card-body text-center">
-            <h5 class="card-title">${currentMemberName}</h5>
-            <p class="card-text">${currentBusinessRole}</p>
-            <a href="${currentMemberPhoto}" class="btn btn-primary">
-              foto ${currentMemberName}
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text">${role}</p>
+            <a href="${photo}" class="btn btn-primary">
+              foto ${name}
             </a>
           </div>
         </div>
@@ -98,6 +107,14 @@ teamMembers.forEach(element => {
     </div>
     <!--end col-->
   `
+  return html
+}
 
-  rowElement.innerHTML += cardHTML
-})
+const renderHTML = (element, target)=> {
+  target.innerHTML += element
+}
+
+appLoad()
+
+
+
