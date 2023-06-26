@@ -156,6 +156,9 @@ closeModalButton.addEventListener('click', ()=> {
 })
 
 openModalButton.addEventListener('click', ()=> {
+  window.scroll({
+    top: 0,
+  })
   bodyElement.classList.add('active')
 })
 
